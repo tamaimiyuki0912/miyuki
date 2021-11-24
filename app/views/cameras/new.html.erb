@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+<h3>新規投稿</h3>
+    <%= form_for @camera do |f| %>
+  <div class="field">
+    <%= f.label :imege %>
+   
+  </div>
+  <%= f.submit "Tweetする" %>
+<% end %>
+<%= link_to "Tweet一覧に戻る", cameras_path %>
+    </body>
+</html>

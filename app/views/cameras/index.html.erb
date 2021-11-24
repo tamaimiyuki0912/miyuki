@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>GeekInstagram</title>
+    </head>
+    <body>
+         <h3>投稿一覧</h3>
+            <%= link_to "新規投稿へ", new_camera_path %>
+                <div class="cameras-container">
+                    <% @cameras.each do |t| %>
+                <div class="camera4">
+                    <%= t.created_at %>
+                    
+                    <%= link_to "詳細へ", camera_path(t.id) %>
+                　　 
+                </div>
+            <% end %>
+        <div>
+        </div>
+
+
+    </body>
+</html>
+<!-- 画像投稿実装中 -->
