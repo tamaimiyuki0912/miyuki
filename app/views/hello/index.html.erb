@@ -1,0 +1,4 @@
+<%= link_to "投稿一覧へ", cameras_path %>
+<% if user_signed_in? %>
+    <%= link_to "マイページへ", user_path(current_user.id) %>　
+<% end %>

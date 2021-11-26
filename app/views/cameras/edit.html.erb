@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <div>
+            <h3>編集</h3>
+            <%= form_for @camera do |f| %>
+
+                    <%= f.label :title %>
+                    <%= f.text_field :title, :size => 140 %> 
+                
+                <%= f.submit "編集する" %>
+              <% end %>
+              
+
+            <%= link_to "一覧に戻る", cameras_path %>
+        </div>
+        # titileカラム追加する
+
+    </body>
+</html>

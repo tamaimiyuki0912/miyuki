@@ -7,12 +7,17 @@
     <body>
 <h3>新規投稿</h3>
     <%= form_for @camera do |f| %>
+  
   <div class="field">
-    <%= f.label :imege %>
-   
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+
+    <br><%= f.label :title %>
+    <%= f.text_field :title, :size => 140 %>
   </div>
+  
   <%= f.submit "Tweetする" %>
 <% end %>
-<%= link_to "Tweet一覧に戻る", cameras_path %>
+<%= link_to "一覧に戻る", cameras_path %>
     </body>
 </html>

@@ -5,18 +5,26 @@
         <title>GeekInstagram</title>
     </head>
     <body>
-         <h3>投稿一覧</h3>
+    <%= link_to "TOPへ", root_path %>
+        <h3>投稿一覧</h3>
             <%= link_to "新規投稿へ", new_camera_path %>
+            <% if user_signed_in? %>
+                <%= link_to "マイページへ", user_path(current_user.id) %>　
+            <% end %>
                 <div class="cameras-container">
                     <% @cameras.each do |t| %>
-                <div class="camera4">
-                    <%= t.created_at %>
+                        <div class="camera4">
+                            <%= image_tag t.image_url, size: "250x200" if t.image? %>
+                            <br><%= t.title %>
+
+                            <br><a href="/users/<%= t.user.id %>"><%= t.user.name %></a>
                     
-                    <%= link_to "詳細へ", camera_path(t.id) %>
-                　　 
-                </div>
-            <% end %>
-        <div>
+                            <br><%= link_to "詳細へ", camera_path(t.id) %></br>
+                            <%= link_to "編集する", edit_camera_path(t.id) %>
+                    　　    <%= button_to "削除する", camera_path(t.id), method: :delete %>
+                        </div>
+                    <% end %>
+                <div>
         </div>
 
 
