@@ -2,6 +2,14 @@ class CamerasController < ApplicationController
 
     def index
         @cameras = Camera.all
+
+        if params[:search] == nil
+            @cameras= Camera.all
+        elsif params[:search] == ''
+            @cameras= Camera.all
+        else
+            @cameras = Camera.where("title LIKE ? ",'%' + params[:search] + '%')
+        end
     end
 
     def new
@@ -11,6 +19,9 @@ class CamerasController < ApplicationController
     def show
         @camera = Camera.find(params[:id])
         @user = User.find_by(id: @camera.user_id)
+
+        @comments = @camera.comments
+        @comment = Comment.new
     end
 
     def create

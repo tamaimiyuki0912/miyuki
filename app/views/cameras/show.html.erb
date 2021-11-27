@@ -10,11 +10,46 @@
                 <div class="camera4">
                     <p><%= @camera.title %></p>
                     <%= @user.name %>
-
-
                 </div>
 
+            <div class="comment-wrapper">
+                    <p>コメント一覧</p>
+                    <% @comments.each do |c| %>
+                        <div>
+                            <%= c.user.email unless c.user.blank? %>
+                            <br>
+                            <%= c.content %>
+                        </div>
+                            <br>
+                    <% end %>
             
+                <% if user_signed_in? %>
+                
+                    <%= form_with(model: [@camera, @comment], local: true) do |f| %>
+                        <%= f.text_area :content %>
+                        <%= button_tag type: "submit" do %>
+                            <i class="far fa-comments"></i> コメントする
+                            
+                        <% end %>
+                    <% end %>
+                <% end %>
+            </div>
+
+
+            <% if user_signed_in? %>
+            <% if current_user.already_liked?(@camera) %>
+                <%= link_to camera_like_path(@camera), method: :delete do %>
+                <p>いいねを取り消す</p><%= @camera.likes.count %>
+                <% end %>
+            <% else %>
+                <%= link_to camera_likes_path(@camera), method: :post do %>
+                <p>いいね</p><%= @camera.likes.count %>
+                <% end %>
+            <% end %>
+        <% else %>
+            <p>いいねの数 = </p><%= @camera.likes.count %>
+        <% end %>
+
             <%= link_to "一覧に戻る", cameras_path %>
         </div>
 

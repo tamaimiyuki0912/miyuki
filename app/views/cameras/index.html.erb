@@ -8,9 +8,19 @@
     <%= link_to "TOPへ", root_path %>
         <h3>投稿一覧</h3>
             <%= link_to "新規投稿へ", new_camera_path %>
+
+            <h3>投稿を検索</h3>
+ <%= form_tag({controller:"cameras",action:"index"}, method: :get) do %>
+   <%= text_field_tag :search %>
+   <%= submit_tag '検索する'  %>
+<% end %>
+
+
             <% if user_signed_in? %>
                 <%= link_to "マイページへ", user_path(current_user.id) %>　
             <% end %>
+
+
                 <div class="cameras-container">
                     <% @cameras.each do |t| %>
                         <div class="camera4">
@@ -20,8 +30,13 @@
                             <br><a href="/users/<%= t.user.id %>"><%= t.user.name %></a>
                     
                             <br><%= link_to "詳細へ", camera_path(t.id) %></br>
-                            <%= link_to "編集する", edit_camera_path(t.id) %>
-                    　　    <%= button_to "削除する", camera_path(t.id), method: :delete %>
+                            
+                            <% if user_signed_in? %>
+                                <% if current_user == @user || current_user.admin? %>
+                                    <%= link_to "編集する", edit_camera_path(t.id) %>
+                                    <%= button_to "削除する", camera_path(t.id), method: :delete %>
+                                <% end %>
+                            <% end %>                                                     
                         </div>
                     <% end %>
                 <div>
