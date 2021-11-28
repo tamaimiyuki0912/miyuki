@@ -1,7 +1,13 @@
 class CommentsController < ApplicationController
     before_action :authenticate_user!
 
+    def index
+        @comments = @camera.comments
+        @comment = Comment.new
+    end
+    
     def create
+        
         camera = Camera.find(params[:camera_id])
         comment = camera.comments.build(comment_params)
         comment.user_id = current_user.id

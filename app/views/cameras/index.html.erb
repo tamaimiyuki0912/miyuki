@@ -15,12 +15,6 @@
    <%= submit_tag '検索する'  %>
 <% end %>
 
-
-            <% if user_signed_in? %>
-                <%= link_to "マイページへ", user_path(current_user.id) %>　
-            <% end %>
-
-
                 <div class="cameras-container">
                     <% @cameras.each do |t| %>
                         <div class="camera4">
@@ -28,6 +22,7 @@
                             <br><%= t.title %>
 
                             <br><a href="/users/<%= t.user.id %>"><%= t.user.name %></a>
+
                     
                             <br><%= link_to "詳細へ", camera_path(t.id) %></br>
                             
@@ -45,4 +40,3 @@
 
     </body>
 </html>
-<!-- 画像投稿実装中 -->

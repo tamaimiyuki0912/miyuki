@@ -3,6 +3,8 @@ class CamerasController < ApplicationController
     def index
         @cameras = Camera.all
 
+        
+
         if params[:search] == nil
             @cameras= Camera.all
         elsif params[:search] == ''

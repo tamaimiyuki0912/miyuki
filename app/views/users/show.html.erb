@@ -6,6 +6,8 @@
     </head>
     <body clss="mypage">
         <h1>マイページ</h1>
+        <%= render :partial => "relationships/follow_button", :locals => { user: @user } %>
+
         <p>名前 : <%= @user.name %></p>
 
         <p class="mypage">
@@ -14,11 +16,15 @@
         
         <p>メールアドレス : <%= @user.email %></p>
         <p>プロフィール : <%= @user.profile %></p>
+
+        
         
         <% if current_user.id == @user.id %>
         <%= link_to "編集する", edit_user_registration_path %>
         <% end %>
-    
+
+        
+       
 
 
 

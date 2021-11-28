@@ -3,15 +3,16 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
+  resources :relationships, only: [:create, :destroy]
 
   resources :cameras do
     
     resources :likes, only: [:create, :destroy]
-    resources :comments, only: [:create, :destroy] 
-
+    resources :comments, only: [:create, :destroy]
   end
 
-
+  resources :maps
   root 'hello#index'
+  resources :relationships, only: [:create, :destroy]
 
 end
