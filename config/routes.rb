@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :users, only: [:show] 
+  resources :users, :only => [:index, :show]
 
   resources :relationships, only: [:create, :destroy]
 
@@ -9,7 +11,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
 
-  resources :users, :only => [:index, :show]
+  
   
   resources :messages, :only => [:create]
   resources :rooms, :only => [:create, :show, :index]

@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
         @comments = @camera.comments
         @comment = Comment.new
     end
-    
+
     def create
         
         camera = Camera.find(params[:camera_id])
@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
 
     def destroy
         Comment.find(params[:id]).destroy
-        redirect_to cameras_path
+        redirect_back(fallback_location: cameras_path)
     end
 
     private

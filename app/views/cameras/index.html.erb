@@ -1,42 +1,30 @@
-<!DOCTYPE html>
-<html lang="ja">
-    <head>
-        <meta charset="UTF-8">
-        <title>GeekInstagram</title>
-    </head>
-    <body>
-    <%= link_to "TOPへ", root_path %>
-        <h3>投稿一覧</h3>
-            <%= link_to "新規投稿へ", new_camera_path %>
+<%= link_to "TOPへ", root_path %>
+<h3>投稿一覧</h3>
+<%= link_to "新規投稿へ", new_camera_path %>
+<h3>投稿を検索</h3>
 
-            <h3>投稿を検索</h3>
- <%= form_tag({controller:"cameras",action:"index"}, method: :get) do %>
-   <%= text_field_tag :search %>
-   <%= submit_tag '検索する'  %>
+<%= form_tag({controller:"cameras",action:"index"}, method: :get) do %>
+    <%= text_field_tag :search %>
+    <%= submit_tag '検索する'  %>
 <% end %>
 
-                <div class="cameras-container">
-                    <% @cameras.each do |t| %>
-                        <div class="camera4">
-                            <%= image_tag t.image_url, size: "250x200" if t.image? %>
-                            <br><%= t.title %>
+<div class="cameras-container">
+    <% @cameras.each do |t| %>
+        <div class="camera4">
+            <%= image_tag t.image_url, size: "250x200" if t.image? %>
+                <br><%= t.title %>
 
-                            <br><a href="/users/<%= t.user.id %>"><%= t.user.name %></a>
+                <br><a href="/users/<%= t.user.id %>"><%= t.user.name %></a>
 
                     
-                            <br><%= link_to "詳細へ", camera_path(t.id) %></br>
-                            
-                            <% if user_signed_in? %>
-                                <% if current_user == @user || current_user.admin? %>
-                                    <%= link_to "編集する", edit_camera_path(t.id) %>
-                                    <%= button_to "削除する", camera_path(t.id), method: :delete %>
-                                <% end %>
-                            <% end %>                                                     
-                        </div>
-                    <% end %>
-                <div>
+                <br><%= link_to "詳細へ", camera_path(t.id) %></br>
+
+                <% if user_signed_in? && current_user.id == t.user_id %> 
+                        <%= link_to "編集する", edit_camera_path(t.id) %>
+                        <%= button_to "削除する", camera_path(t.id), method: :delete %>                                            
+                <% end %>
         </div>
+    <% end %>
+    <div>
+</div>
 
-
-    </body>
-</html>
