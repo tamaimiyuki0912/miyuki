@@ -1,35 +1,43 @@
+<body class="user">
+  <div class="frame">
+    <div class="user1">
+    <%= image_tag 'image1.png' %>
+    <h4>GeekInstagramにログイン</h4>
 
-<h2>ログイン</h2>
-<p>※登録したメールアドレスとパスワードを入力してください。</p>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      
+        <div class="field">
+        <label for="text1" id="l_text1">名前 </label>
+          <p><%= f.text_field :name, autofocus: true %></p>
+          
+        </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <h2>名前 </h2><br />
-    <%= f.text_field :name, autofocus: true %>
-  </div>
+        <div class="field">
+          <label for="text2" id="2_text2">メール </label><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          
+        </div>
 
-  <div class="field">
-    <h2>メール </h2><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+        <div class="field">
+          <label for="text3" id="3_text3">パスワード </label><br />
+          <%= f.password_field :password, autocomplete: "off" %>
+        </div>
 
-  <div class="field">
-    <h2>パスワード </h2><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+        <% if devise_mapping.rememberable? -%>
+          <div class="field1">
+            <%= f.check_box :remember_me %>
+            <p>私を覚える</p>
+          </div>
+        <% end -%>
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <h2>私を覚える</h2>
+        <div class="actions">
+          <%= f.submit "Log in" %>
+        </div>
+      <% end %>
+
+      <%= render "users/shared/links" %>
+
+      <%= link_to "TOPへ", root_path %>
     </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
-
-<%= link_to "TOPへ", root_path %>
+  <div>
+</body>

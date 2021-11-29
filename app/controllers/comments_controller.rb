@@ -21,8 +21,9 @@ class CommentsController < ApplicationController
     end
 
     def destroy
-        Comment.find(params[:id]).destroy
-        redirect_back(fallback_location: cameras_path)
+        comment = Comment.find(params[:id])
+      comment.destroy
+      redirect_back(fallback_location: cameras_path)
     end
 
     private

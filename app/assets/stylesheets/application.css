@@ -19,6 +19,34 @@
     padding: 0;
     }
 
-.user{
-    text-align: right;
-}
+   header {
+      font-size: medium;
+      color: rgba(196, 124, 175, 0.863);
+      background-color: white;
+      height: 90px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+   }
+
+   .header {
+      margin-top: 15px;
+      display: flex;
+      align-items: center;
+   }
+
+   header a {
+      color: #ba96d8; 
+      text-decoration: none; 
+   }
+
+   header ul {
+      color: rgb(211, 203, 183);
+      display: flex;
+   }
+
+   header li {
+      list-style: none;
+      padding-right: 15px;
+   }

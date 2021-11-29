@@ -1,3 +1,35 @@
 // Place all the styles related to the hello controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.top{
+    background-image: url("image3.jpg");
+    background-size: cover;
+}
+
+.top2{
+    background-color: white;
+    padding: 7%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.5;
+
+}
+
+.top2 p{
+    margin-top: 10%;
+    width: 100%; 
+    height: 1.5em;
+    font-size : 20px;
+    font-weight: bold;
+    text-align: center;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}

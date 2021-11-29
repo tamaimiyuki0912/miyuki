@@ -2,3 +2,35 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.frame{
+    width: 80%; 
+    margin: 30px auto; 
+    max-width: 600px; 
+}
+
+img{
+    width: 80px; 
+    height: auto; 
+}
+
+.user1 {
+    text-align: center;
+}
+
+.field {
+    width: 100%; /*幅*/
+    height: 85px; /*高さ*/
+    margin: 20px 0px; /*領域外のスペース*/
+    background-color: #eee; /*背景色*/
+    border-bottom: 2px solid #41bbf3;
+}
+
+body{
+    font-family: "Segoe UI", Meiryo, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+
+
+
+
+

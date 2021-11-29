@@ -5,16 +5,6 @@
 </div>
 
 <div class="comment-wrapper">
-    <p>コメント一覧</p>
-    <% @comments.each do |c| %>
-        <div>
-            <%= c.user.email unless c.user.blank? %>
-            <br>
-            <%= c.content %>
-        </div>
-            <br>
-            
-    <% end %>
 
 <% if user_signed_in? %>
 
@@ -26,6 +16,19 @@
         
     <% end %>
 <% end %>
+
+    <p>コメント一覧</p>
+    <% @comments.each do |c| %>
+        <div>
+            <%= c.user.email unless c.user.blank? %>
+            <br>
+            <%= c.content %>
+        </div>
+            <br>
+            <% if user_signed_in? && current_user.id == c.user_id %>  
+        <%= button_to "削除する", camera_comment_path(c.camera.id, c.id), method: :delete %>
+      <% end %>
+    <% end %>
 </div>
 
 
