@@ -1,4 +1,5 @@
 class CamerasController < ApplicationController
+    before_action :authenticate_user!, only: [:new, :create]
 
     def index
         @cameras = Camera.all
@@ -13,6 +14,8 @@ class CamerasController < ApplicationController
             @cameras = Camera.where("title LIKE ? ",'%' + params[:search] + '%')
         end
     end
+
+
 
     def new
         @camera = Camera.new
@@ -38,6 +41,7 @@ class CamerasController < ApplicationController
             end
     end
 
+   
     def edit
         @camera = Camera.find(params[:id])
     end
@@ -65,3 +69,4 @@ class CamerasController < ApplicationController
     
 end
 
+  

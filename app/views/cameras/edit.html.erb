@@ -7,15 +7,19 @@
     <body>
         <div>
             <h3>編集</h3>
-            <%= form_for @camera do |f| %>
-
-                    <%= f.label :title %>
-                    <%= f.text_field :title, :size => 140 %> 
-                
-                <%= f.submit "編集する" %>
-            <% end %>
+                <div>
+                    <%= form_for @camera do |f| %>
+                            <%= f.file_field :image %>
+                            <br>
+                            <%= f.label :title %>
+                            <%= f.text_field :title, :size => 140 %> 
+                        
+                        <%= f.submit "編集する" %>
+                    <% end %>
+                </div>
 
             <%= link_to "一覧に戻る", cameras_path %>
+            
         </div>
 
     </body>
